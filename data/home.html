@@ -1,0 +1,151 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!--<script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>-->    
+<script src="libs/js/validations.js"></script>
+<link href='libs/css/main.css' rel="stylesheet" type="text/css" >
+<link href='libs/css/signup.css' rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="libs/css/MultipleForm.css">  
+<script src="libs/js/signup.js"></script>
+<script src="libs/js/tableScript.js"></script>
+<!--<script src="libs/js/table2CSV.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/table2csv@1.1.4/src/table2csv.min.js"></script>
+
+
+<body style="background-color:MediumSeaGreen;font: 15px Calibri;">
+<br>
+<center><div class="widget"><div class="title" id="welcome"> Welcome cebadm</div></div></center>
+
+<div class='form-container'>
+
+	<form class='form-body Individual-form' id='SignupForm' method="post" novalidate>
+		<div class="row">
+			<div class="form-group col-sm-8 col-md-8 col-lg-12 ">
+				<div class="row">
+					<div class="form-group col-sm-4 col-md-4 col-lg-4">
+						<select class="form-control" data-toggle="tooltip" data-placement="bottom" title="FileType" name="FileType" id="FileType" onchange= "setFileName(this.value)">
+
+							<option value = "" selected>Select</option>
+							<br>
+							<option value = "cebfile" >CeB_UnEnroll</option>
+							<option value = "billpayfile">Billpay_UnEnroll</option>
+							<option value = "peoplepayfile" >Peoplepay_UnEnroll</option>	
+							<option value = "etfile">ExternalTransfers_Unenroll</option>
+							<option value = "admfile">Admin_User_Reuse</option>
+						</select>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="form-group col-sm-8 col-md-8 col-lg-8 ">
+				<div class="row">
+						<div class="form-group col-sm-4 col-md-4 col-lg-4">
+						<input type="text" required class="form-control" data-toggle="tooltip" data-placement="bottom" title="User Id" name="UserID" id="UserID" placeholder="User ID*" class="field" style="font: 15px Calibri;" maxlength="30" />
+					</div>
+					<div class="form-group col-sm-4 col-md-4 col-lg-4">
+						<input type="text" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Bank" name="Bank" required id="Bank" onkeyup="this.value = this.value.toUpperCase();" placeholder="Bank*" class="field" style="font: 15px Calibri;" maxlength="3"/>
+					</div>
+					<div class="form-group col-sm-4 col-md-4 col-lg-4">
+						<input type="text" required class="form-control" data-toggle="tooltip" data-placement="bottom" title="Ticket" name="Ticket" id="Ticket" placeholder="Ticket*" style="font: 15px Calibri;" class="field" maxlength="25" />
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group col-sm-12 col-md-12 col-lg-12">
+					<button type="button" id="add1" style="font: 15px Calibri;" onclick="addition('maintainDataTableSpace')">Add</button>
+					<button type="button" id="delete1" style="font: 15px Calibri;" onclick="deletion('maintainDataTableSpace')">Delete</button>    
+					<button type="button" style="font: 15px Calibri;" id="export-btn">Generate</button>
+			</div>
+			<input type="hidden" value = "" name = "dummy" id = "dummy">
+		</div>    
+		<div class="row">
+			<div class="table-responsive"> 
+				<table class="table" id="maintainDataTableSpace">
+					<tbody>
+						<tr>
+							<th class="noExl">Select</th>
+							<br>
+							<th>User ID</th>
+							<th>Bank</th>
+							<th>Ticket</th>
+						</tr>
+					</tbody>    
+				</table>
+			</div>
+		</div>
+	</form>
+</div>
+<br>
+
+<script>    
+
+var fileName = "_";
+
+
+function setFileName(val){
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+var hour = today.getHours();
+var min = today.getMinutes()
+
+today = yyyy + mm + dd + hour + min;
+
+	fileName = val + "_" + today;
+$("#maintainDataTableSpace .even").remove();
+$("#maintainDataTableSpace .odd").remove();
+ if ( fileName == 'etfile' + "_" + today )
+	alert ("Note : This GUI accept only user id based external transfer unenrollment. Account Based unenrollment should be done by technician");
+}
+
+
+jQuery(document).ready(function() {
+    
+    $('#export-btn').on('click', function(e)
+	{
+		if (confirm('Are you sure you want to save this file')) {
+
+        e.preventDefault();
+        ResultsToTable();
+		
+	} else 
+	{
+  console.log('Thing was not saved to the database.');
+	}
+
+    });
+    
+    function ResultsToTable(){    
+        /*$("#maintainDataTableSpace").table2excel({
+            exclude: ".noExl",
+            name: "Worksheet Name",
+filename: fileName,
+fileext: ".xls",
+        });
+*/
+$("#maintainDataTableSpace").table2csv({
+ separator: ',',
+ newline: '\n',
+ quoteFields: false,
+ excludeColumns: '.noExl',
+ excludeRows: '',
+ trimContent: true, // Trims the content of individual <th>, <td> tags of whitespaces. 
+ filename:fileName + '.csv'
+
+});
+    }
+
+});
+
+</script>
+    
