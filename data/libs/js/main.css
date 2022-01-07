@@ -1,0 +1,265 @@
+body{
+	margin:0;
+	padding:0;
+	min-width:350px;
+	font-family: 'Lato', sans-serif;
+	font-size:12px;
+    /*background: #704da0 url('../img/bg.jpg') repeat 0 0;*/
+    /* background: #704da0 url('../img/bg-new.jpg') repeat 0 0; */
+     /* background: #704da0 url('../img/bg_new1.png') repeat 0 0;  */
+     /* background: #704da0 url('../img/signupbg.jpg') repeat 0 0;  */
+     background-size: 500px;
+    /* background: #b1afaf; */
+	-webkit-animation: 10s linear 0s normal none infinite animate;
+	-moz-animation: 10s linear 0s normal none infinite animate;
+	-ms-animation: 10s linear 0s normal none infinite animate;
+	-o-animation: 10s linear 0s normal none infinite animate;
+	animation: 10s linear 0s normal none infinite animate;
+ 
+}
+ 
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+
+.main-logo-container{
+    border-radius: 20px;
+    width: 80%;
+    margin: 5% auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 10px #b1afaf;
+    padding-top: 10px;
+    padding: 20px 0px;
+}
+
+.main-logo-container .logo{
+	width: 100%;
+    max-width: 300px;
+}
+
+.main-logo-container .title{
+    font-size: 30px;
+    font-weight: bold;
+    color: #704da0;
+}
+
+.main-logo-container .action-txt{
+	margin: 30px;
+    font-size: 25px;
+    
+}
+
+.action-txt .txt{
+	color: #704da0;;
+    margin: 15px 0;
+}
+
+.btn-group:not(.uib-datepicker-popup .showButtonBar) {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    background: none;
+    border: 0;
+    border-radius: 5px;
+	cursor:pointer;
+	outline:none;
+}
+
+.main-btns{
+    color: #fff;
+    background: #704da0;
+    font-weight: bold;
+    font-size: 20px;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 5px #7d41c7;
+}
+
+.main-btns:hover{
+    background-color: #7d41c7;
+	box-shadow: 0 5px #704da0;
+}
+
+.main-btns:active {
+	background-color: #7d41c7;
+	box-shadow: 0 2px #704da0;
+	transform: translateY(4px);
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+
+.modal h4{
+    left: 15px;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+}
+
+.modal-header{
+    background: #704da0;
+    color: #ffffff;
+	font-weight:bold;
+}
+.success-txt{
+    position: relative;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.close{
+    color: #ffffff;
+    opacity: 2.5;
+}
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus {
+    background-color: #FFFFFF !important;
+    color: #555 !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #555555 !important;
+}
+
+.fa-check-circle{
+    color:#13c313;
+}
+
+a {
+    cursor:pointer;
+    text-decoration: none;
+}
+a:hover,a:active,a:focus {
+    text-decoration: none;
+}
+
+.btn-default:hover  {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    font-weight:bold;
+}
+
+.btn{
+    outline:none;
+    font-weight: bold;
+}
+
+.btn-default{
+    color: #fff;
+    background-color: #704da0;
+    border-color: #adadad;
+}
+
+.register-btn{
+    border: none;
+    font-weight: bold;
+    color: #704da0;
+    background: none;
+}
+.register-btn:hover,.register-btn:active,.register-btn:focus{
+    color: #704da0;
+    background-color: rgb(255, 255, 255);
+    border-color: #adadad;
+}
+
+.title-fp{
+    color: #704da0; 
+}
+
+.title-sp{
+    color: #676262;
+}
+
+.error-msg{
+    font-size: 10px;
+    color: red;
+    position: absolute;
+    margin: 2px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
+.bg-0{background:#ddd  !important;}
+.bg-1{background:#607D8B !important;}
+.bg-2{background:#03A9F4 !important;}
+.bg-3{background:#4CAF50 !important;}
+.bg-4{background:#FF9800 !important;}
+.bg-5{background:#6495ed !important;}
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #704da0 !important;
+    border-color: #704da0 !important;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    color: #704da0 !important;
+    background-color: #eee !important;
+    border-color: #704da0 !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    color: #fff !important;;
+    cursor: default;
+    background-color:  #704da0 !important;
+    border-color:  #704da0 !important;
+}
+
+#toast-container > div {
+    opacity: 1;
+   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+   filter: alpha(opacity=100);
+ }
+
+ .step{
+    opacity: 1 !important;
+ }
+
+ .tooltip .tooltip-inner {
+    background-color:#704da0;
+}
+.tooltip .tooltip-arrow {
+      border-top-color: #704da0;
+}
